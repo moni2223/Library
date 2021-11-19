@@ -2,10 +2,11 @@ import React,{useState} from "react";
 import "./Form.css";
 import logo from "./1.png";
 import bigPicture from "./2.png";
-import {Link} from "react-router-dom";
+import {Link, useHistory} from "react-router-dom";
 import view from "./view.svg";
 
 export default function LoginForm() {
+    const history = useHistory();
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
@@ -13,7 +14,7 @@ export default function LoginForm() {
         return username.length > 0 && password.length > 0;
     }
 
-    function handleSubmit(event) {
+   async function handleSubmit(event) {
         event.preventDefault();
         const requestOptions = {
             method: 'POST',
@@ -23,7 +24,10 @@ export default function LoginForm() {
                 password:password})
         };
         fetch('https://books-library-dev.herokuapp.com/api/user/login', requestOptions)
-            .then(response =>console.log(response))
+            .then(response => response.json())
+            .then(response => {
+                history.push("/catalog");
+                })
             .catch(error =>{
                 console.log("error", error)
                 alert("An error occured, please try again later.")
@@ -41,10 +45,10 @@ export default function LoginForm() {
 
     return (
         <div className='container'>
-            <img className="logo" src={logo}/>
+            <img alt="logo" className="logo" src={logo}/>
             <h3>WELCOME BACK!</h3>
             <form onSubmit={handleSubmit}>
-                <label>E-mail:</label>
+                <label>Username:</label>
                 <input
                     type="username"
                     className="email"
@@ -59,11 +63,12 @@ export default function LoginForm() {
                     onChange={(e) => setPassword(e.target.value)}
                 />
                 <p></p>
-                <img src={view} className="view" onClick={showPassword}/>
+                <img src={view} alt="view_pass" className="view" onClick={showPassword}/>
                 <button type="submit" className="Login" disabled={!validateForm()}><b>Login</b></button>
                 <p>You don't have an account?<Link to='/'>Sign up here!</Link></p>
             </form>
-            <img className="big-picture" src={bigPicture}/>
+            <img className="big-picture" alt="side_picture" src={bigPicture}/>
         </div>
     );
 }
+

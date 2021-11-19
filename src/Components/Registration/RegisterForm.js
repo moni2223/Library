@@ -1,16 +1,15 @@
 import React,{useState} from "react";
-import {BrowserRouter as Router, Switch, Route, Link, Redirect} from 'react-router-dom';
+import {Link, useHistory} from "react-router-dom";
 import "../Login/Form.css";
 import logo from "../Login/1.png";
 import bigPicture from "../Login/2.png";
-import library from "../../API/library";
 import view from "../Login/view.svg";
 
 export default function RegisterForm(){
+    const history = useHistory();
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [password1,setRepeatedPassword] = useState("");
-    var isSuccessfull = 0;
 
     function validateForm() {
         return username.length > 0 && password.length > 0;
@@ -37,14 +36,14 @@ export default function RegisterForm(){
 
         else{
             alert("Credentials invalid. E-mail should be at least 4 characters long and Password should be 6 characters long.");
-            var passes = document.getElementsByClassName("pass");
+            const passes = document.getElementsByClassName("pass");
             passes[0].value = '';
             passes[1].value = '';
             }
     }
     function handleRedirect(res){
         if( res.status === 201 ){
-            window.location.href = 'http://localhost:3000/login';
+            history.push("/login");
         }
         else alert("An error occured, please try again later.");
     }
@@ -68,7 +67,7 @@ export default function RegisterForm(){
 
     return (
         <div className='container'>
-            <img className="logo" src={logo}/>
+            <img className="logo" src={logo} alt="logo" />
             <h3>WELCOME BACK!</h3>
             <form onSubmit={handleSubmit}>
                     <label>Username:</label>
@@ -93,11 +92,11 @@ export default function RegisterForm(){
                     onChange={(e) => setRepeatedPassword(e.target.value)}
                 />
                 <p></p>
-                <img src={view} className="view" onClick={showPassword}/>
+                <img src={view} alt="view_pass" className="view" onClick={showPassword}/>
                 <button type="submit" className="Login" disabled={!validateForm()}><b>Register</b></button>
                 <p>You have an account?<Link to='/login'>Log in here!</Link></p>
             </form>
-            <img className="big-picture" src={bigPicture}/>
+            <img className="big-picture" alt="side_picture" src={bigPicture}/>
         </div>
             );
 }
