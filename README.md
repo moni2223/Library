@@ -1,70 +1,205 @@
-# Getting Started with Create React App
+React Task
+Fork this repository into your account (public)
+Create a responsive web application from the provided design and integrate it with an existing API.
+Push changes as you progress through the task
+Tips
+Creating a react-app: https://reactjs.org/docs/create-a-new-react-app.html
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Use 'react-router' as a navigation tool: https://reactrouter.com
 
-## Available Scripts
+Additional information
+"Settings" page and "Recover password" button are solely with a visual purpose.
 
-In the project directory, you can run:
+"Short description" for the books is not provided in the API response, please use sample text there.
 
-### `npm start`
+Design
+Desktop: https://xd.adobe.com/view/b01c49ef-1e0f-4052-85c4-4b49dc22e8a7-e54f/specs/
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Mobile: https://xd.adobe.com/view/3c5a07d4-9225-4759-9c42-dd609aa53b28-6909/specs/
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Font: https://fonts.google.com/specimen/Montserrat
 
-### `npm test`
+All other assets can be acquired from the provided XD files.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+API
+URL: https://books-library-dev.herokuapp.com
 
-### `npm run build`
+Header example:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+ 'Content-Type': 'application/json',
+  Authorization: 'Bearer eyJhbGciOiJIUzI...'
+Endpoints
+/api/book
+Method - GET
+Authentication: YES
+Get all books in library
+[
+  {
+    "_id": "616720073b3d39971f0e94c5",
+    "name": "The Catcher in the Rye",
+    "author": "Jerome David Salinger",
+    "image": "https://dev-fidweb.s3.eu-central-1.amazonaws.com/tasks/books/The%20Roommate.jpeg",
+    "createOn": "2021-10-09T21:00:00.000Z",
+    "lastUpdateOn": "2021-10-09T21:00:00.000Z",
+    "genre": {
+      "_id": "61671fea3b3d39971f0e94c4",
+      "name": "Classic"
+    }
+  },
+  {
+    "_id": "616743453b3d39971f0e94c7",
+    "name": "The Eye of the World",
+    "author": "Robert Jordan",
+    "image": "https://dev-fidweb.s3.eu-central-1.amazonaws.com/tasks/books/The%20Roommate.jpeg",
+    "createOn": "2021-10-09T21:00:00.000Z",
+    "lastUpdateOn": "2021-10-09T21:00:00.000Z",
+    "genre": {
+      "_id": "616743073b3d39971f0e94c6",
+      "name": "Fantasy"
+    }
+  },
+]
+/api/book/:id
+Method - GET
+Authentication: YES
+Get single book by id
+Example param: 61674f8b97652408ce5edc3c
+{
+  "_id": "61674f8b97652408ce5edc3c",
+  "name": "Nineteen Eighty-Four",
+  "author": "George Orwell",
+  "image": "https://dev-fidweb.s3.eu-central-1.amazonaws.com/tasks/books/The%20Roommate.jpeg",
+  "createOn": "2021-10-09T21:00:00.000Z",
+  "lastUpdateOn": "2021-10-09T21:00:00.000Z",
+  "genre": {
+    "_id": "61671fea3b3d39971f0e94c4",
+    "name": "Classic"
+  }
+}
+/api/book/search
+Method - POST
+Authentication: YES
+Search for match in books names (titles)
+Example body
+{ "pattern": "catch" //keyword (not case sensitive) }
+[
+  {
+    "_id": "616720073b3d39971f0e94c5",
+    "name": "The Catcher in the Rye", // 'catch' match 'Catcher
+    "author": "Jerome David Salinger",
+    "image": "https://dev-fidweb.s3.eu-central-1.amazonaws.com/tasks/books/The%20Roommate.jpeg",
+    "createOn": "2021-10-09T21:00:00.000Z",
+    "lastUpdateOn": "2021-10-09T21:00:00.000Z",
+    "genre": {
+      "_id": "61671fea3b3d39971f0e94c4",
+      "name": "Classic"
+    }
+  },
+]
+/api/genre/
+Method - GET
+Authentication: YES
+Get all genres in library
+[
+  {
+    "_id": "61671fea3b3d39971f0e94c4",
+    "name": "Classic",
+    "createOn": "Sat Oct 09 2021 00:00:00 GMT+0300 (Eastern European Summer Time)",
+    "lastUpdateOn": "Mon Oct 11 2021 00:00:00 GMT+0300 (Eastern European Summer Time)"
+  },
+  {
+    "_id": "616743073b3d39971f0e94c6",
+    "name": "Fantasy",
+    "createOn": "Fri Sep 10 2021 00:00:00 GMT+0300 (Eastern European Summer Time)",
+    "lastUpdateOn": "2021-10-05"
+  }
+]
+/api/genre/:id
+Method - GET
+Authentication: YES
+Get all books from this genre
+Example param: 61671fea3b3d39971f0e94c4
+[
+  {
+    "_id": "616720073b3d39971f0e94c5",
+    "name": "The Catcher in the Rye",
+    "author": "Jerome David Salinger",
+    "image": "https://dev-fidweb.s3.eu-central-1.amazonaws.com/tasks/books/The%20Roommate.jpeg",
+    "createOn": "2021-10-09T21:00:00.000Z",
+    "lastUpdateOn": "2021-10-09T21:00:00.000Z",
+    "genre": {
+      "_id": "61671fea3b3d39971f0e94c4",
+      "name": "Classic"
+    }
+  },
+  {
+    "_id": "61674f2c97652408ce5edc3b",
+    "name": "Pride and Prejudice",
+    "author": "Jane Austen",
+    "image": "https://dev-fidweb.s3.eu-central-1.amazonaws.com/tasks/books/The%20Roommate.jpeg",
+    "createOn": "2021-10-09T21:00:00.000Z",
+    "lastUpdateOn": "2021-10-09T21:00:00.000Z",
+    "genre": {
+      "_id": "61671fea3b3d39971f0e94c4",
+      "name": "Classic"
+    }
+  }
+]
+/api/genre/search
+Method - POST
+Authentication: YES
+Search for match in genres name
+Example body
+{ "pattern": "c" //keyword (not case sensitive) }
+[
+  {
+    "_id": "61674f8b97652408ce5edc3c",
+    "name": "Nineteen Eighty-Four",
+    "author": "George Orwell",
+    "image": "https://dev-fidweb.s3.eu-central-1.amazonaws.com/tasks/books/The%20Roommate.jpeg",
+    "createOn": "2021-10-09T21:00:00.000Z",
+    "lastUpdateOn": "2021-10-09T21:00:00.000Z",
+    "genre": {
+      "_id": "61671fea3b3d39971f0e94c4",
+      "name": "Classic"   // "c" match "Classic"
+    }
+  },
+  {
+    "_id": "6167fdd55e4f426e50c210b3",
+    "name": "Murder on the Orient Express",
+    "author": "Agatha Christie",
+    "image": "https://dev-fidweb.s3.eu-central-1.amazonaws.com/tasks/books/The%20Roommate.jpeg",
+    "createOn": "2021-10-09T21:00:00.000Z",
+    "lastUpdateOn": "2021-10-09T21:00:00.000Z",
+    "genre": {
+      "_id": "61684e0b091b4964e2986b06",
+      "name": "Crime"   // "c" match "Crime"
+    }
+  }
+]
+/api/user/register
+Method - POST
+Authentication: NO
+Register new user
+Example body
+{
+  "username": "elka",     // String with min 4 symbols, no special symbols, except _
+  "password": "123456"    // String with min 6 symbols, no special symbols
+}
+/api/user/login
+Method - POST
+Authentication: NO
+Login to system
+Example body
+{
+  "username": "elka",     // String with min 4 symbols, no special symbols, except _
+  "password": "123456"    // String with min 6 symbols, no special symbols
+}
+Result is JWT token
+{
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNjgyZmI4NjgwMzZjN2JjMGQyMTA1MSIsInVzZXJuYW1lIjoiZWxrYSIsImlhdCI6MTYzNDIzMTg2MiwiZXhwIjoxNjM0MzE4MjYyfQ.AVa7-SbPgSynSO39oxqlQi8TCJiBrhu89lEqG47KSds"
+}
+/api/user/logout
+Method - POST
+Authentication: YES
+Logout from system
