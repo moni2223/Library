@@ -1,5 +1,5 @@
 import React,{useState} from "react";
-import {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom';
+import {BrowserRouter as Router, Switch, Route, Link, Redirect} from 'react-router-dom';
 import "../Login/Form.css";
 import logo from "../Login/1.png";
 import bigPicture from "../Login/2.png";
@@ -7,24 +7,34 @@ import library from "../../API/library";
 import view from "../Login/view.svg";
 
 export default function RegisterForm(){
-    const [email, setEmail] = useState("");
+    const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [password1,setRepeatedPassword] = useState("");
+    var isSuccessfull = 0;
 
     function validateForm() {
-        return email.length > 0 && password.length > 0;
+        return username.length > 0 && password.length > 0;
     }
     function handleSubmit(event) {
         event.preventDefault();
         if(password === password1 && checkCredentials())
         {
-            const credentials = {
-                username: email,
-                password: password
+            const requestOptions = {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json',
+                    Authorization: 'Bearer eyJhbGciOiJIUzI...' },
+                body: JSON.stringify({ username: username,
+                password:password})
             };
-            library.post('/user/create', credentials)
-                .then(response => console.log(response));
+            fetch('https://books-library-dev.herokuapp.com/api/user/register', requestOptions)
+                .then(response =>(handleRedirect(response)))
+                .catch(error =>{
+                    console.log("error", error)
+                    alert("An error occured, please try again later.")
+                });
+
         }
+
         else{
             alert("Credentials invalid. E-mail should be at least 4 characters long and Password should be 6 characters long.");
             var passes = document.getElementsByClassName("pass");
@@ -32,11 +42,16 @@ export default function RegisterForm(){
             passes[1].value = '';
             }
     }
-
+    function handleRedirect(res){
+        if( res.status === 201 ){
+            window.location.href = 'http://localhost:3000/login';
+        }
+        else alert("An error occured, please try again later.");
+    }
     function checkCredentials()
     {
         var format = /[ `!#$%^&*()+\-=\[\]{};':"\\|,<>\/?~]/;
-        if(!format.test(email) && email.length >= 4 && !format.test(password) && password.length >= 6)return true;
+        if(!format.test(username) && username.length >= 4 && !format.test(password) && password.length >= 6)return true;
         else return false;
     }
 
@@ -56,12 +71,12 @@ export default function RegisterForm(){
             <img className="logo" src={logo}/>
             <h3>WELCOME BACK!</h3>
             <form onSubmit={handleSubmit}>
-                <label>E-mail:</label>
+                    <label>Username:</label>
                 <input
-                    type="email"
+                    type="username"
                     className="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
                 />
                 <label>Password:</label>
                 <input

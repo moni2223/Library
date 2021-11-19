@@ -6,15 +6,28 @@ import {Link} from "react-router-dom";
 import view from "./view.svg";
 
 export default function LoginForm() {
-    const [email, setEmail] = useState("");
+    const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
     function validateForm() {
-        return email.length > 0 && password.length > 0;
+        return username.length > 0 && password.length > 0;
     }
 
     function handleSubmit(event) {
         event.preventDefault();
+        const requestOptions = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json',
+                Authorization: 'Bearer eyJhbGciOiJIUzI...' },
+            body: JSON.stringify({ username: username,
+                password:password})
+        };
+        fetch('https://books-library-dev.herokuapp.com/api/user/login', requestOptions)
+            .then(response =>console.log(response))
+            .catch(error =>{
+                console.log("error", error)
+                alert("An error occured, please try again later.")
+            });
     }
 
     function showPassword(){
@@ -33,10 +46,10 @@ export default function LoginForm() {
             <form onSubmit={handleSubmit}>
                 <label>E-mail:</label>
                 <input
-                    type="email"
+                    type="username"
                     className="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
                 />
                 <label>Password:</label>
                 <input
