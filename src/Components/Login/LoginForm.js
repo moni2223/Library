@@ -1,5 +1,4 @@
 import React,{useState} from "react";
-
 import "./Form.css";
 import logo from "./1.png";
 import bigPicture from "./2.png";

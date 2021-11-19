@@ -3,6 +3,7 @@ import {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom';
 import "../Login/Form.css";
 import logo from "../Login/1.png";
 import bigPicture from "../Login/2.png";
+import library from "../../API/library";
 
 export default function RegisterForm(){
     const [email, setEmail] = useState("");
@@ -12,10 +13,17 @@ export default function RegisterForm(){
     function validateForm() {
         return email.length > 0 && password.length > 0;
     }
-
     function handleSubmit(event) {
         event.preventDefault();
-        if(password === password1 && checkCredentials()){}
+        if(password === password1 && checkCredentials())
+        {
+            const credentials = {
+                username: email,
+                password: password
+            };
+            library.post('/user/create', credentials)
+                .then(response => console.log(response));
+        }
         else{
             alert("Credentials invalid. E-mail should be at least 4 characters long and Password should be 6 characters long.");
             var passes = document.getElementsByClassName("pass");
@@ -70,7 +78,7 @@ export default function RegisterForm(){
                 />
                 <p></p>
                 <button onClick={showPassword} className="ShowPass">Show</button>
-                <button type="submit" className="Login" disabled={!validateForm()}><b>Register</b></button>
+                <button type="submit" className="Login" disabled={!validateForm()} onClick={handleSubmit}><b>Register</b></button>
                 <p>You have an account?<Link to='/login'>Log in here!</Link></p>
             </form>
             <img className="big-picture" src={bigPicture}/>
