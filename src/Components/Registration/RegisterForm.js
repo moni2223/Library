@@ -4,6 +4,7 @@ import "../Login/Form.css";
 import logo from "../Login/1.png";
 import bigPicture from "../Login/2.png";
 import library from "../../API/library";
+import view from "../Login/view.svg";
 
 export default function RegisterForm(){
     const [email, setEmail] = useState("");
@@ -77,8 +78,8 @@ export default function RegisterForm(){
                     onChange={(e) => setRepeatedPassword(e.target.value)}
                 />
                 <p></p>
-                <button onClick={showPassword} className="ShowPass">Show</button>
-                <button type="submit" className="Login" disabled={!validateForm()} onClick={handleSubmit}><b>Register</b></button>
+                <img src={view} className="view" onClick={showPassword}/>
+                <button type="submit" className="Login" disabled={!validateForm()}><b>Register</b></button>
                 <p>You have an account?<Link to='/login'>Log in here!</Link></p>
             </form>
             <img className="big-picture" src={bigPicture}/>

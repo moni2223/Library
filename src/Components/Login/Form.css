@@ -86,8 +86,8 @@ label {
     opacity: 1;
     font-size:30px;
 }
-
-p{
-    left:400px;
+.view{
+    position:relative;
+    left:530px;
     top:-50px;
 }

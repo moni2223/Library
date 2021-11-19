@@ -3,6 +3,7 @@ import "./Form.css";
 import logo from "./1.png";
 import bigPicture from "./2.png";
 import {Link} from "react-router-dom";
+import view from "./view.svg";
 
 export default function LoginForm() {
     const [email, setEmail] = useState("");
@@ -45,7 +46,7 @@ export default function LoginForm() {
                     onChange={(e) => setPassword(e.target.value)}
                 />
                 <p></p>
-                <button onClick={showPassword} className="ShowPass">Show</button>
+                <img src={view} className="view" onClick={showPassword}/>
                 <button type="submit" className="Login" disabled={!validateForm()}><b>Login</b></button>
                 <p>You don't have an account?<Link to='/'>Sign up here!</Link></p>
             </form>
