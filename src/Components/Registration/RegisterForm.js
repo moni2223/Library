@@ -20,8 +20,7 @@ export default function RegisterForm(){
         {
             const requestOptions = {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json',
-                    Authorization: 'Bearer eyJhbGciOiJIUzI...' },
+                headers: { 'Content-Type': 'application/json'},
                 body: JSON.stringify({ username: username,
                 password:password})
             };

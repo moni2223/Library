@@ -18,13 +18,21 @@ export default function LoginForm() {
         event.preventDefault();
         const requestOptions = {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json',
-                Authorization: 'Bearer eyJhbGciOiJIUzI...' },
+            headers: { 'Content-Type': 'application/json'},
             body: JSON.stringify({ username: username,
                 password:password})
         };
+
         fetch('https://books-library-dev.herokuapp.com/api/user/login', requestOptions)
-            .then(response => response.json())
+            .then(async res => {
+                if(res.status === 200) {
+                const response = await res.json();
+                sessionStorage.clear();
+                    sessionStorage.setItem('currentUser', JSON.stringify(response.token));
+                    localStorage.clear();
+                }
+                 else throw new Error();
+            })
             .then(response => {
                 history.push("/catalog");
                 })
