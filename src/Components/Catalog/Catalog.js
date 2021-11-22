@@ -1,25 +1,33 @@
-import React from 'react';
-import {Redirect} from "react-router-dom";
-
+import React, {useEffect, useState} from 'react';
+import {Link, Redirect} from "react-router-dom";
+import "./catalog.css";
+import polygon from "./polygon.svg";
 
 export default function Catalog() {
 
-    const authheader =  `Bearer ${sessionStorage.getItem("currentUser")}`;
+    const [books,setBooks] = useState([]);
+
+    useEffect(()=>{
+        componentDidMount();
+    },[]);
+
+    const authheader =  "Bearer "+ sessionStorage.getItem("currentUser");
+
     async function componentDidMount() {
-        console.log(sessionStorage.getItem("currentUser"));
         const requestOptions = {
             method: 'GET',
             headers: { 'Content-Type': 'application/json',
-                        Authorization: authheader
+                        Authorization: authheader.replace(/['"]+/g, '')
             }
         };
 
         fetch('https://books-library-dev.herokuapp.com/api/book',requestOptions)
-            .then(async res =>
-                {console.log(res);}
-            )
-        //const data = await response.json();
-        //this.setState({ totalReactPackages: data.total })
+            .then(res => res.json())
+
+            .then((json) =>{
+                setBooks(json);
+                console.log(json);
+            })
     }
 
 
@@ -29,12 +37,29 @@ export default function Catalog() {
             alert("Please log in first!!!");
             return <Redirect to="/login"/>
         }
-        else{
-            componentDidMount();
-            return(<div>dsds</div>);
+
+        else {
+            return(
+                books.map(book =>{
+                return(
+                    <div className="book">
+                        <img className="image" src={book.image}/>
+                        <h4 className="Name">{book.name}</h4>
+                        <p className="Author">{book.author}</p>
+                        <p className="Genre">Genre: <b>{book.genre.name}</b></p>
+                        <span className="Created">Created On: <b>{book.createOn.slice(0,10)}</b></span>
+                           <span className="Updated"> Updated On: <b>{book.lastUpdateOn.slice(0,10)}</b></span>
+                        <button type="submit" className="moreinfo" >
+                            <Link to='/'>
+                                <img className="polygon" src={polygon}/>
+                            </Link>
+                        </button>
+                    </div>
+                )
+            })
+            );
         }
     }
 
     return handleLoggedIn();
 }
-

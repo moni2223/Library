@@ -1,0 +1,29 @@
+
+.book{
+    width:35%;
+    height:10%;
+    display:inline-block;
+    margin-left:8%;
+    margin-top:2%;
+    box-shadow: 2px 2px gray;
+}
+.image{
+    float:left;
+    width:20%;
+    height:50%;
+}
+.Name{
+    text-align:left;
+    font-size:180%;
+}
+.Author,.Genre{
+    text-align: left;
+    font-size:100%;
+}
+.moreinfo{
+    float:right;
+    margin-top:-25%;
+    height:170px;
+    width:7%;
+    background-color: #08C642;
+}
