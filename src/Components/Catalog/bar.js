@@ -5,7 +5,6 @@ import "./Bar.css";
 import prof from "./profile.svg";
 
 export default function Bar(){
-    const activebut = document.querySelector(".active");
     return(
         <div className="ui pointing menu">
         <a><Link to='/catalog'><img alt="logo" className="navlogo" src={logo}/></Link></a>

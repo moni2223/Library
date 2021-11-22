@@ -5,6 +5,7 @@ import RegisterForm from "./Registration/RegisterForm";
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import Catalog from "./Catalog/Catalog";
 import Bar from "./Catalog/bar";
+import SearchBar from "./Catalog/SearchBar";
 
 class App extends React.Component{
     render() {
@@ -19,6 +20,7 @@ class App extends React.Component{
                 </Route>
                 <Route path="/catalog">
                     <Bar/>
+                    <SearchBar/>
                     <Catalog/>
                 </Route>
             </Switch>

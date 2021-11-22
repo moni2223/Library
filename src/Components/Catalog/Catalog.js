@@ -43,15 +43,15 @@ export default function Catalog() {
                 books.map(book =>{
                 return(
                     <div className="book">
-                        <img className="image" src={book.image}/>
+                        <img className="image" alt="image" src={book.image}/>
                         <h4 className="Name">{book.name}</h4>
                         <p className="Author">{book.author}</p>
                         <p className="Genre">Genre: <b>{book.genre.name}</b></p>
                         <span className="Created">Created On: <b>{book.createOn.slice(0,10)}</b></span>
                            <span className="Updated"> Updated On: <b>{book.lastUpdateOn.slice(0,10)}</b></span>
                         <button type="submit" className="moreinfo" >
-                            <Link to='/'>
-                                <img className="polygon" src={polygon}/>
+                            <Link to='/catalog'>
+                                <img className="polygon" alt="polygon" src={polygon}/>
                             </Link>
                         </button>
                     </div>

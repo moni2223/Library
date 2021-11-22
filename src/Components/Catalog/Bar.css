@@ -1,18 +1,24 @@
 .navlogo{
-    width:30%;
-    height:70%;
+    width:50%;
+    height:80%;
 }
 
 .library{
+    font-size:15px;
     left:20%;
 }
 
 .settings{
+font-size:15px;
     left:20%;
 }
 
 .pic{
     height:10%;
     left:500px;
+}
+
+.moreinfo{
+    position:relative;
 }
 
