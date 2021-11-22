@@ -1,0 +1,31 @@
+.navlogo{
+    width:50%;
+    height:80%;
+}
+
+.library{
+    font-size:15px;
+    left:27%;
+    font: normal normal normal 16px/22px Montserrat;
+
+}
+
+.settings{
+font-size:15px;
+    left:27%;
+    font: normal normal normal 16px/22px Montserrat;
+}
+
+.pic{
+    height:10%;
+    left:500px;
+}
+
+.moreinfo{
+    position:relative;
+}
+
+.navlogo{
+    width:15%;
+    height:10%;
+}

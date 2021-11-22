@@ -1,51 +1,42 @@
-html,body{
-    position:fixed;
-    top:0;
-    bottom:0;
-    left:0;
-    right:0;
-    margin:0;
-}
-
 .container{
-    float:left;
-    height: 1000px;
-    width:2100px;
+    position:relative;
+    height:180%;
+    width:150%;
     background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
     background: #FFFFFF 0% 0% no-repeat padding-box;
     box-shadow: 2px 5px 15px #00347026;
     opacity: 1;
+    padding-top: 97px;
 }
 .logo{
-    position: relative;
-    left:300px;
-    top:250px;
+    display:inline-block;
+    margin-top: 7%;
+    margin-left:12%;
 }
 .big-picture{
-    position:absolute;
-    width:1210px;
-    height:990px;
-    left:880px;
-top:5px;
+    position:relative;
+    display:inline-block;
+    float:right;
+    width:51.5%;
+    height:40%;
+    margin-top:-48%;
+    margin-right:0.1%;
 }
 
 h3{
-    position:relative;
-    left:400px;
-    top:250px;
+    margin-left:20%;
 }
 /*--------------------------------------------------- Form styling*/
 form{
-    position:relative;
-    top:400px;
-    left:250px;
+    margin-top: 8%;
+    margin-left:10%;
 }
 
 input{
     display:block;
 }
 label {
-    font-size:20px;
+    font-size:100%;
     letter-spacing: 0px;
     color: #0D242E;
     opacity: 1;
@@ -91,8 +82,7 @@ label {
     left:530px;
     top:-50px;
 }
-
-p
+.Signup
 {
-    font-size:20px;
+    font-size:15px;
 }

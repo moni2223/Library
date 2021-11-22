@@ -1,0 +1,50 @@
+.container{
+    height:100% !important;
+    width:99% !important;
+    box-shadow: 2px 2px 2px 2px gray !important;
+}
+
+.Picture{
+    display: inline-block;
+    margin-left:5%;
+    float:left;
+    box-shadow: 3px 3px 3px 3px #888888;
+    height:35%;
+    width:25%;
+}
+
+.imagee{
+    width:100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+.Title{
+    width:65%;
+    height:10%;
+    display:inline-block;
+    margin-top: 5%;
+    background-color: limegreen;
+    border-radius:4px;
+}
+
+h1{
+    text-align: left;
+    color:white;
+    font-size:220%;
+    margin-left:2%;
+}
+.Info{
+    white-space: pre-line;
+    float:left;
+    width:65%;
+    height:120%;
+    border-radius: 4px;
+    box-shadow: 2px 2px 2px 2px gray;
+}
+.infoo{
+    margin-left: 2%;
+    font-size:140%;
+    font: normal normal normal 16px/22px Montserrat;
+}

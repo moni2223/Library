@@ -264,3 +264,8 @@ margin:auto;
 padding:0;
     overflow-x: hidden;
 }
+
+@font-face {
+    font-family: 'Montserrat';
+    src: local('MyFont'), url(fonts/MyFont.woff) format('woff');
+}

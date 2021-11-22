@@ -8,22 +8,28 @@
 }
 .image{
     float:left;
-    width:20%;
+    width:21%;
     height:50%;
+    box-shadow: 3px 3px 3px;
 }
 .Name{
+    margin-left: 5%;
     text-align:left;
-    font-size:180%;
+    font-size:190%;
+    font: normal normal normal 16px/22px Montserrat;
 }
 .Author,.Genre{
     text-align: left;
     font-size:100%;
+    font: normal normal normal 16px/22px Montserrat;
 }
 .moreinfo{
     float:right;
-    margin-top:-25%;
+    margin-top:-18%;
     height:170px;
     width:7%;
     background-color: royalblue;
     border-radius: 10px;
+
 }
+
