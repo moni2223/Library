@@ -82,7 +82,7 @@ export default function LoginForm() {
                 <p></p>
                 <img src={view} alt="view_pass" className="view" onClick={showPassword}/>
                 <button type="submit" className="Login" disabled={!validateForm()}><b>Login</b></button>
-                <p className="Signup">You don't have an account?<Link to='/'>Sign up here!</Link></p>
+                <p className="Signup">You don't have an account?<Link to='/register'>Sign up here!</Link></p>
                 <br/>
                 <br/>
             </form>

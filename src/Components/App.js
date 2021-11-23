@@ -9,6 +9,7 @@ import SearchBar from "./Catalog/SearchBar/SearchBar";
 import SingleBook from "./Catalog/SingleBook/SingleBook";
 import ByAuthor from "./ByAuthor/ByAuthor";
 import Settings from "./Settings/Settings";
+import Found from "./Catalog/SearchBar/Found";
 
 class App extends React.Component{
 
@@ -17,10 +18,10 @@ class App extends React.Component{
             <Router>
                 <Switch>
                 <Route exact path='/'>
-                <RegisterForm/>
+                <LoginForm/>
                 </Route>
-                <Route path='/login'>
-                    <LoginForm/>
+                <Route path='/register'>
+                    <RegisterForm/>
                 </Route>
                 <Route path="/catalog">
                     <Bar active="catalog"/>
@@ -38,6 +39,10 @@ class App extends React.Component{
                     <Route path="/settings">
                         <Bar active="settings"/>
                         <Settings/>
+                    </Route>
+                    <Route path="/found">
+                        <Bar active="catalog"/>
+                        <Found/>
                     </Route>
             </Switch>
             </Router>

@@ -34,7 +34,7 @@ export default function Catalog() {
             function handleLoggedIn() {
             if (sessionStorage.length === 0) {
             alert("Please log in first!!!");
-            return <Redirect to="/login"/>
+            return <Redirect to="/"/>
         }
 
             else {

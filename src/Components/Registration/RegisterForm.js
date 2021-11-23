@@ -50,7 +50,7 @@ export default function RegisterForm(){
     }
     function handleRedirect(res){
         if( res.status === 201 ){
-            history.push("/login");
+            history.push("/");
         }
         else alert("An error occured, please try again later.");
     }
@@ -101,7 +101,7 @@ export default function RegisterForm(){
                 <p></p>
                 <img src={view} alt="view_pass" className="view" onClick={showPassword}/>
                 <button type="submit" className="Login" disabled={!validateForm()}><b>Register</b></button>
-                <p>You have an account?<Link to='/login'>Log in here!</Link></p>
+                <p>You have an account?<Link to='/'>Log in here!</Link></p>
             </form>
             <img className="big-picture" alt="side_picture" src={bigPicture}/>
         </div>
