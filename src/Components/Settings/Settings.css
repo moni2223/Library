@@ -1,0 +1,41 @@
+.FirstHalf{
+    float:left;
+    margin-left:2%;
+    border-radius: 1px;
+    box-shadow:2px 2px 3px 3px gray;
+    width:40%;
+    height: 87vh;
+}
+.SecondHalf{
+float:right;
+    margin-right:6%;
+    border-radius: 1px;
+    box-shadow:2px 2px 3px 3px gray;
+    width:40%;
+    height: 87vh;
+}
+
+.general{
+    margin-top:2%;
+    margin-left: 5%;
+    margin-bottom:10%;
+    font-size: 150%;
+    font: normal normal normal 26px/22px Montserrat;
+}
+
+.FirstList{
+    list-style-type: none;
+
+}
+
+li:not(:last-child) {
+    margin-bottom: 8%;
+}
+li{
+
+    font: normal normal normal 17px/18px Montserrat;
+    margin-left: -3%;
+}
+.arrow{
+font-size:200%;
+}

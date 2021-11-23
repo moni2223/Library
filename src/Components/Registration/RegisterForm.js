@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+import React, {useEffect, useState} from "react";
 import {Link, useHistory} from "react-router-dom";
 import "../Login/Form.css";
 import logo from "../Login/1.png";
@@ -14,6 +14,14 @@ export default function RegisterForm(){
     function validateForm() {
         return username.length > 0 && password.length > 0;
     }
+
+    useEffect(() => {
+        if(sessionStorage.length > 0){
+            alert("You are already logged in!");
+            history.push("/catalog");
+        }
+    });
+
     function handleSubmit(event) {
         event.preventDefault();
         if(password === password1 && checkCredentials())

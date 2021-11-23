@@ -8,28 +8,47 @@
 }
 .image{
     float:left;
-    width:21%;
-    height:50%;
+    width:23%;
+    height:55%;
     box-shadow: 3px 3px 3px;
 }
-.Name{
-    margin-left: 5%;
-    text-align:left;
+.BookTitle{
+    position:relative;
+    text-align: left;
+    margin-left:25%;
     font-size:190%;
     font: normal normal normal 16px/22px Montserrat;
 }
 .Author,.Genre{
+    position:relative;
     text-align: left;
+    margin-left:25%;
     font-size:100%;
     font: normal normal normal 16px/22px Montserrat;
 }
 .moreinfo{
     float:right;
-    margin-top:-18%;
-    height:170px;
+    margin-top:-21%;
+    height:189px;
     width:7%;
     background-color: royalblue;
     border-radius: 10px;
-
+}
+.Created,.Updated{
+    position:relative;
+    margin-top:10%;
+    margin-left:2%;
 }
 
+.astext{
+    background:none;
+    border:none;
+    margin:0;
+    padding:0;
+    cursor: pointer;
+    color:blue;
+}
+
+.BookTitle{
+    font-size: 150%;
+}

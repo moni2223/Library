@@ -10,12 +10,12 @@ export default function Catalog() {
     let history = useHistory();
 
     useEffect(()=>{
-        componentDidMount();
+        HandleRequest();
     },[]);
 
     const authheader =  "Bearer "+ sessionStorage.getItem("currentUser");
 
-    async function componentDidMount() {
+    async function HandleRequest() {
         const requestOptions = {
             method: 'GET',
             headers: { 'Content-Type': 'application/json',
@@ -43,14 +43,23 @@ export default function Catalog() {
             return(
             <div className="book" key={book._id}>
             <img className="image" alt="cover" src={book.image}/>
-            <p>{book.name}</p>
-            <p className="Author"><a href="#">{book.author}</a></p>
+            <p className="BookTitle">{book.name}</p>
+            <p className="Author"><button className="astext" onClick={() =>{
+                history.push({
+                    pathname:"/ByAuthor",
+                    search: '?query='+book.author,
+                    state:{books:books,
+                        author:book.author
+                    }
+                })
+            }}>{book.author}</button></p>
                 <p className="Genre"><b>Genre</b>: {book.genre.name}</p>
             <span className="Created">Created On: <b>{book.createOn.slice(0,10)}</b></span>
             <span className="Updated"> Updated On: <b>{book.lastUpdateOn.slice(0,10)}</b></span>
             <button type="submit" className="moreinfo" onClick={()=>{
                 history.push({
                     pathname:"/book",
+                    search: '?query='+book.name,
                     state:book
                 })
             }}>

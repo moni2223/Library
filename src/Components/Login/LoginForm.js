@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+import React, {useEffect, useState} from "react";
 import "./Form.css";
 import logo from "./1.png";
 import bigPicture from "./2.png";
@@ -15,6 +15,13 @@ export default function LoginForm() {
         return username.length > 0 && password.length > 0;
     }
 
+    useEffect(() => {
+        if(sessionStorage.length > 0){
+            alert("You are already logged in!");
+            history.push("/catalog");
+        }
+    });
+
    async function handleSubmit(event) {
         event.preventDefault();
         const requestOptions = {
@@ -28,7 +35,7 @@ export default function LoginForm() {
             .then(async res => {
                 if(res.status === 200) {
                 const response = await res.json();
-                sessionStorage.clear();
+                    sessionStorage.clear();
                     sessionStorage.setItem('currentUser', JSON.stringify(response.token));
                     localStorage.clear();
                 }

@@ -1,5 +1,5 @@
-import React, {useState} from 'react';
-import {useLocation} from "react-router-dom";
+import React  from 'react';
+import {useHistory, useLocation} from "react-router-dom";
 import "./SingleBook.css";
 
 export default function SingleBook(props) {
@@ -15,7 +15,7 @@ export default function SingleBook(props) {
                 <h1>{location.state.name}</h1>
             </div>
             <div className="Info">
-                <p className="infoo"><a href="#">{location.state.author}</a></p>
+                <p className="infoo">{location.state.author}</p>
                 <p className="infoo">Genre: {location.state.genre.name}</p>
                 <p className="infoo">Created On: {location.state.createOn.slice(0,10)}</p>
                 <p className="infoo">Updated On: {location.state.lastUpdateOn.slice(0,10)}</p>

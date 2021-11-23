@@ -37,7 +37,7 @@ const [state,setState] = useState("");
             <div className="ui category search bar">
                 <form onSubmit={onFormSubmit} className="ui form">
                     <div className="field">
-                        <label>Image Search:</label>
+                        <label>Book Search:</label>
                         <input type = "text"
                                onChange={(e) => setState({term:e.target.value})}/>
                     </div>
